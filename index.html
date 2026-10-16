@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The most powerful dev tools. As a dummy, for dummies.</title>
+<meta name="description" content="A designer's guide to Claude Code and the tools it connects to: Figma, GitHub, Vercel, Supabase and Railway. You describe the outcome. Claude does the code, git and deploys.">
+<meta name="theme-color" content="#191919">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The most powerful dev tools. As a dummy, for dummies.">
+<meta property="og:description" content="A designer's guide to Claude Code, Figma, GitHub, Vercel, Supabase and Railway.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the slides</a>
+<div class="progress" aria-hidden="true"><span class="progress__bar" data-progress></span></div>
+
+<header class="topbar">
+  <button class="btn" type="button" data-menu aria-expanded="false" aria-controls="rail">Menu</button>
+  <div class="topbar__now" aria-live="polite"><b data-now-title>The most powerful dev tools.</b><span data-now-count>01 / 22</span></div>
+  <button class="btn btn--solid" type="button" data-present>Present</button>
+</header>
+<div class="scrim" data-scrim></div>
+
+<nav class="rail" id="rail" aria-label="Slides">
+  <a class="rail__brand" href="#cover">The most powerful dev tools.<span>As a dummy, for dummies.</span></a>
+  <div class="rail__actions">
+    <button class="btn btn--solid" type="button" data-present>Present <kbd>P</kbd></button>
+    <button class="btn" type="button" data-keys>Keys <kbd>?</kbd></button>
+  </div>
+  <div class="graph" data-graph>
+    <span class="graph__progress" data-graph-progress></span>
+    <ol class="chapters">
+      <li class="chapter" data-chapter="Start"><a class="chapter__link" href="#cover">Start</a></li>
+      <li class="chapter" data-chapter="Claude Code"><a class="chapter__link" href="#claude-code">Claude Code</a>
+        <ul class="branch">
+          <li><a href="#claude-code">Build</a></li>
+          <li><a href="#own-thing">Its own thing</a></li>
+          <li><a href="#folders">Folders and memory</a></li>
+          <li><a href="#claude-code-setup">Setup and use</a></li>
+          <li><a href="#point">Point at it</a></li>
+          <li><a href="#permissions">Permissions</a></li>
+        </ul>
+      </li>
+      <li class="chapter" data-chapter="How it connects"><a class="chapter__link" href="#connects">How it connects</a></li>
+      <li class="chapter" data-chapter="Figma"><a class="chapter__link" href="#figma">Figma</a>
+        <ul class="branch">
+          <li><a href="#figma">Design</a></li>
+          <li><a href="#figma-setup">Setup and use</a></li>
+        </ul>
+      </li>
+      <li class="chapter" data-chapter="GitHub"><a class="chapter__link" href="#github">GitHub</a>
+        <ul class="branch">
+          <li><a href="#github">Version control</a></li>
+          <li><a href="#github-ask">I ask. Claude does.</a></li>
+          <li><a href="#github-terms">Four terms</a></li>
+          <li><a href="#github-setup">Setup and use</a></li>
+        </ul>
+      </li>
+      <li class="chapter" data-chapter="Vercel"><a class="chapter__link" href="#vercel">Vercel</a>
+        <ul class="branch">
+          <li><a href="#vercel">Deploy</a></li>
+          <li><a href="#vercel-setup">Setup and use</a></li>
+        </ul>
+      </li>
+      <li class="chapter" data-chapter="Supabase"><a class="chapter__link" href="#supabase">Supabase</a>
+        <ul class="branch">
+          <li><a href="#supabase">Data and auth</a></li>
+          <li><a href="#supabase-setup">Setup and use</a></li>
+        </ul>
+      </li>
+      <li class="chapter" data-chapter="Railway"><a class="chapter__link" href="#railway">Railway</a>
+        <ul class="branch">
+          <li><a href="#railway">Hosting and tasks</a></li>
+          <li><a href="#railway-setup">Setup and use</a></li>
+        </ul>
+      </li>
+      <li class="chapter" data-chapter="Start to finish"><a class="chapter__link" href="#feature">Start to finish</a>
+        <ul class="branch">
+          <li><a href="#feature">One feature</a></li>
+          <li><a href="#links">Links and docs</a></li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+  <p class="rail__foot">22 slides, about 30 minutes.<br>Slides from Figma. Page built with Claude Code.</p>
+</nav>
+
+<main id="main">
+
+<section class="slide slide--cover" id="cover" data-n="01" data-title="The most powerful dev tools." data-chapter="Start" data-time="0:30">
+  <div class="cover">
+    <div class="cover__text">
+      <h1 class="cover__title"><span><i>The most powerful</i></span><span><i>dev tools.</i></span></h1>
+      <p class="cover__sub">As a dummy (Ian), for dummies.</p>
+      <div class="cover__go">
+        <a class="btn btn--solid" href="#claude-code">Start reading</a>
+        <button class="btn" type="button" data-present>Present <kbd>P</kbd></button>
+      </div>
+    </div>
+    <figure class="cover__book"><img src="assets/img/book.webp" alt="The cover of Web Design For Dummies." width="577" height="671" decoding="async"></figure>
+    <p class="cover__hint">Scroll, use the nav, or press P to present</p>
+  </div>
+  <aside class="slide__notes" hidden><p>The framing for the whole talk: the most powerful dev tools, used by a dummy, for dummies. I’m a designer, not a developer. These tools are built for engineers, and the trick is that I don’t operate them: I tell Claude Code what I want and it does the work. This talk covers which tools, how they connect, and how I ask.</p></aside>
+</section>
+
+<section class="slide" id="claude-code" data-n="02" data-title="Claude Code" data-chapter="Claude Code" data-time="2:00">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Claude Code</h2>
+        <p class="slide__sub">Build</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Claude Code</span><span><b>02</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="stack">
+        <ul class="points"><li>You describe the outcome. It handles the code, git and GitHub.</li><li>Reads your Figma frames through connectors and builds them in your project folder.</li><li>Shows a plan, a diff and a live preview, so you review before anything ships.</li></ul>
+        <div class="prompt">
+          <p class="prompt__label">Example prompt</p>
+          <p class="prompt__text">read this figma frame, plan the build, implement it in this project, and show it in the preview</p>
+          <button class="copy" type="button" data-copy="read this figma frame, plan the build, implement it in this project, and show it in the preview">Copy prompt</button>
+        </div>
+      </div>
+      <figure class="shot">
+        <button class="video" type="button" data-yt="rWaQSQEm_aY" data-title="The new Claude Code desktop app, redesigned for parallel agents" aria-label="Play video: The new Claude Code desktop app, redesigned for parallel agents">
+          <span class="video__face">
+            <span class="video__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4.5v15l13-7.5z"/></svg></span>
+            <span class="video__title">The new Claude Code desktop app</span>
+            <span class="video__meta">Official video from Anthropic. Loads from YouTube when you press play.</span>
+          </span>
+        </button>
+        <figcaption>Sessions on the left, the conversation in the middle, a live preview on the right. Diff, terminal and plan panes open alongside.</figcaption>
+        <a class="shot__link" href="https://code.claude.com/docs/en/desktop" target="_blank" rel="noopener">code.claude.com/docs</a>
+      </figure>
+    </div>
+    <div class="caps">
+      <p class="caps__label">What it can do</p>
+      <ul class="pills "><li>Reads designs</li><li>Plans first</li><li>Builds</li><li>Live preview</li><li>Reviews diffs</li><li>Opens PRs</li><li>Parallel sessions</li></ul>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>The desktop app, not the chat site. Walk the window: sessions on the left, the conversation, the live preview. Connectors are how it reaches Figma and the other services. Each session runs in its own git worktree.</p><p>Link: code.claude.com/docs</p></aside>
+</section>
+<section class="slide" id="own-thing" data-n="03" data-title="Claude Code is its own thing." data-chapter="Claude Code" data-time="1:30">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Claude Code is its own thing.</h2>
+        <p class="slide__sub">Separate from Chat and Cowork.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Claude Code</span><span><b>03</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <table class="grid grid--tabs">
+      <thead><tr><th scope="col">Tab</th><th scope="col">What it&rsquo;s for</th><th scope="col">What it knows</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Tab">Chat</td><td data-label="What it&rsquo;s for">Everyday conversations with Claude.</td><td class="muted" data-label="What it knows">Its own chat history.</td></tr>
+        <tr><td data-label="Tab">Cowork</td><td data-label="What it&rsquo;s for">Dispatch and longer agentic work.</td><td class="muted" data-label="What it knows">Its own tasks and history. Dispatch can start a Code session with a task.</td></tr>
+        <tr class="is-code"><td data-label="Tab">Code</td><td data-label="What it&rsquo;s for">Building software in a project folder.</td><td class="muted" data-label="What it knows">One session&rsquo;s history, the project folder, CLAUDE.md and auto memory. Nothing from your Chat or Cowork conversations.</td></tr>
+      </tbody>
+    </table>
+    <div class="cols cols--tight">
+      <div class="callout"><p class="callout__text">Each tab keeps its own conversations. What I tell Chat or Cowork doesn&rsquo;t carry into Code.</p></div>
+      <p class="note">Connectors and skills are shared: set them up once under Customize.</p>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>The desktop app has three tabs: Chat for everyday conversations, Cowork for Dispatch and longer agentic work, and Code for building software. They keep separate conversations. A Code session knows its own history, its project folder, CLAUDE.md and auto memory, and nothing I told Chat or Cowork. The one bridge is Dispatch, which can start a Code session with a task. Connectors and skills live under Customize and are shared across the tabs.</p></aside>
+</section>
+<section class="slide" id="folders" data-n="04" data-title="Folders on your computer." data-chapter="Claude Code" data-time="1:30">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Folders on your computer.</h2>
+        <p class="slide__sub">Plus its own saved context.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Claude Code</span><span><b>04</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div>
+        <h3 class="colhead">Your folder</h3>
+        <div class="sections sections--compact">
+          <div class="info"><p class="info__label">Project folder</p><p>Pick a folder or repo when you start a session. Claude reads, edits and runs commands there.</p></div>
+          <div class="info"><p class="info__label">Worktrees</p><p>For Git projects, each session can work in its own copy under .claude/worktrees, so parallel tasks don&rsquo;t collide.</p></div>
+          <div class="info"><p class="info__label">Terminal</p><p>The built-in terminal opens in the same folder, with the same environment as Claude.</p></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="colhead">What it remembers</h3>
+        <div class="sections sections--compact">
+          <div class="info"><p class="info__label">Session history</p><p>Each session has its own history, saved on your computer. A new session starts fresh.</p></div>
+          <div class="info"><p class="info__label">CLAUDE.md</p><p>A file in the project with instructions you write. Claude reads it at the start of every session.</p></div>
+          <div class="info"><p class="info__label">Auto memory</p><p>Notes Claude writes itself from your corrections and preferences, carried into later sessions.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="tree">
+      <p class="tree__label">What that looks like on disk</p>
+<pre><code>my-project/            <em>the folder I pick</em>
+&#9500;&#9472; CLAUDE.md           <em>instructions I write</em>
+&#9500;&#9472; .claude/
+&#9474;  &#9500;&#9472; worktrees/       <em>one copy per parallel session</em>
+&#9474;  &#9492;&#9472; settings, skills, rules
+&#9492;&#9472; &hellip;your files
+~/.claude/             <em>global settings, skills, rules</em></code></pre>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Every Code session is tied to a project folder or repo on my computer. Claude reads, edits and runs commands there, and the built-in terminal opens in the same place. For Git projects each session can work in its own worktree under .claude/worktrees so parallel tasks don’t collide. Memory: each session has its own history saved locally and a new one starts fresh. What carries over is CLAUDE.md, instructions I write, and auto memory, notes Claude writes itself from my corrections. Settings, skills and rules live in the project’s .claude folder, with global ones in ~/.claude.</p></aside>
+</section>
+<section class="slide" id="claude-code-setup" data-n="05" data-title="Claude Code: setup and use." data-chapter="Claude Code" data-time="1:30">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Claude Code: setup and use.</h2>
+        <p class="slide__sub">Install it. Open a folder. Go.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Claude Code</span><span><b>05</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="sections">
+        <div class="info"><p class="info__label">Use it when</p><p>Any build or edit task: reading a design, changing code, running the app.</p></div>
+        <div class="info"><p class="info__label">Day to day</p><p>Describe outcomes, not commands. Claude handles the files, git and tooling. Add services any time from + → Connectors.</p></div>
+        <div class="info"><p class="info__label">Access it uses</p><p>Your project folder, plus whatever the permission mode and connectors allow.</p></div>
+      </div>
+      <div class="steps" data-steps>
+        <p class="steps__label">How to set it up</p>
+        <ol>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">1</span><span class="step__text">Install the Claude desktop app and sign in. Claude Code needs a paid plan.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">2</span><span class="step__text">Open the Code tab and choose your project folder.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">3</span><span class="step__text">For Git projects, pick the worktree option. Claude manages the branch.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">4</span><span class="step__text">Pick a permission mode, then describe what you want.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">5</span><span class="step__text">Review the preview and the diff, and say what to change. No terminal needed.</span></span></label></li>
+          <li><label class="step step--loop"><input type="checkbox"><span class="step__row"><span class="step__num"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.9-4.15"/><path d="M13.6 2.2v3h-3"/></svg></span><span class="step__text">Rinse and repeat: next task, next session.</span></span></label></li>
+        </ol>
+        <p class="steps__tally" aria-live="polite" data-tally></p>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Install the desktop app, open the Code tab, choose the folder. For Git projects pick the worktree option so each task is isolated; Claude manages the branch. Pick a permission mode, then describe what you want and review the preview and the diff. No terminal needed. Claude Code needs a paid plan.</p><p>A new worktree is a fresh checkout, so gitignored files like .env don’t come along. Ask Claude to list them in .worktreeinclude (worktrees docs).</p></aside>
+</section>
+<section class="slide" id="point" data-n="06" data-title="Point at it. Say what to change." data-chapter="Claude Code" data-time="1:30">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Point at it. Say what to change.</h2>
+        <p class="slide__sub">Selections become edit requests.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Claude Code</span><span><b>06</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="stack">
+        <div class="ways">
+          <div class="way"><h3>Select an element</h3><p>Pick it in the live preview (Cmd+Shift+S), then say what to change about it.</p></div>
+          <div class="way"><h3>Mark it up</h3><p>Draw arrows, boxes, circles or text on the preview, then click Add to chat.</p></div>
+          <div class="way"><h3>Comment on the diff</h3><p>Click any line to leave a comment. Submit all your comments at once.</p></div>
+          <div class="way"><h3>Attach a reference</h3><p>Drop in a screenshot or mockup and say what to match.</p></div>
+        </div>
+      </div>
+      <div class="demo" data-demo>
+        <p class="demo__label">Try it. Pick something, then say what to change.</p>
+        <div class="mock">
+          <div class="mock__bar"><i></i><i></i><i></i><span>localhost:3000</span></div>
+          <div class="mock__page" data-page>
+            <h3 class="m-el m-head" data-label="Heading" tabindex="0" role="button" aria-pressed="false">Spring sale starts Friday</h3>
+            <p class="m-el m-copy" data-label="Paragraph" tabindex="0" role="button" aria-pressed="false">Pick anything on this page, then tell Claude what to change.</p>
+            <button class="m-el m-btn" data-label="Button" type="button" aria-pressed="false">Shop the sale</button>
+            <div class="marks" data-marks aria-hidden="true"></div>
+          </div>
+          <div class="mock__tools">
+          <div class="tools" role="toolbar" aria-label="Markup tools (demo)">
+            <button type="button" class="tool is-on" data-tool="select" aria-pressed="true" aria-label="Select"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 2.5l11 6.2-4.7 1.3 2.6 4.8-1.9 1-2.6-4.8L4.8 14z"/></svg></button>
+            <button type="button" class="tool" data-tool="box" aria-pressed="false" aria-label="Draw a box"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="13" height="11" rx="1.5"/></svg></button>
+            <button type="button" class="tool" data-tool="circle" aria-pressed="false" aria-label="Draw a circle"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="6.5"/></svg></button>
+            <span class="sep"></span>
+            <button type="button" class="tools__btn" data-add disabled>Add to chat</button>
+          </div>
+          </div>
+        </div>
+        <div class="mock__asks">
+          <span class="label">After pointing, I say:</span>
+          <button type="button" class="pill-btn" data-ask="bigger">make this bigger</button>
+          <button type="button" class="pill-btn" data-ask="tight">tighten the spacing here</button>
+          <button type="button" class="pill-btn" data-ask="match">match the frame</button>
+          <button type="button" class="pill-btn pill-btn--ghost" data-reset>Reset</button>
+        </div>
+        <div class="chat" data-chat aria-live="polite"><p class="hint">Click the heading, the paragraph or the button.</p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Selections turn into edit requests, so I can point instead of describing. In the live preview, Cmd+Shift+S selects an element, and the markup toolbar lets me draw arrows, boxes, circles and text, then Add to chat sends it with my request. In the diff, clicking any line opens a comment box and I can submit all comments at once. I can also attach a screenshot or mockup and say what to match. Then I say what to change: make this bigger, tighten the spacing here, match the frame.</p></aside>
+</section>
+<section class="slide" id="permissions" data-n="07" data-title="Permissions." data-chapter="Claude Code" data-time="1:30">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Permissions.</h2>
+        <p class="slide__sub">How much Claude asks first.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Claude Code</span><span><b>07</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <table class="grid grid--mode" data-modes>
+      <thead><tr><th scope="col">Mode</th><th scope="col">What it does</th></tr></thead>
+      <tbody>
+        <tr tabindex="0" data-mode="manual"><td data-label="Mode">Manual</td><td class="muted" data-label="What it does">Asks before each edit and command.</td></tr>
+        <tr tabindex="0" data-mode="accept"><td data-label="Mode">Accept edits</td><td class="muted" data-label="What it does">Auto-accepts file edits and common file commands like mkdir and mv. Still asks before other terminal commands.</td></tr>
+        <tr tabindex="0" data-mode="plan"><td data-label="Mode">Plan</td><td class="muted" data-label="What it does">Reads and plans. No edits until you approve the plan.</td></tr>
+        <tr tabindex="0" data-mode="bypass"><td data-label="Mode">Bypass permissions</td><td class="muted" data-label="What it does">Runs without permission prompts. Anthropic&rsquo;s docs recommend isolated environments. Safety checks still prompt on external sites.</td></tr>
+      </tbody>
+    </table>
+    <div class="cols cols--tight">
+      <button class="callout callout--btn" type="button" data-runit aria-describedby="runit-hint">
+        <span class="callout__label">How I run it</span>
+        <span class="callout__text">Accept edits or Bypass permissions on stable projects.</span>
+      </button>
+      <div class="stack stack--tight">
+        <p class="note">Connections act with your account&rsquo;s access. Each service page lists what that covers.</p>
+        <p class="note" id="runit-hint">Press the white box to mark the two modes on the table.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Two layers. Connectors act with your account’s access, so scope them: Supabase can be limited to one project or read-only, and Tool access in the Connectors menu controls which tools Claude can use. Then the permission mode. Manual asks before each action. Accept edits auto-approves file edits and common file commands but still asks before other terminal commands. Plan blocks edits until you approve a plan. Auto runs everything with background safety checks. Bypass permissions runs without prompts, and the docs recommend it for isolated environments; safety checks still prompt on external sites.</p><p>How I run it: Accept edits or Bypass permissions on stable projects. Commits and worktrees make edits easy to revert.</p></aside>
+</section>
+<section class="slide" id="connects" data-n="08" data-title="How it all connects." data-chapter="How it connects" data-time="1:15">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">How it all connects.</h2>
+        <p class="slide__sub">Claude Code sits in the middle.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">How it connects</span><span><b>08</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="hub">
+      <div class="hub__root"><b>Claude Code</b><span>Connectors reach into each tool.</span></div>
+      <div class="hub__nodes">
+        <a class="node" href="#figma"><b>Figma</b><small>Design</small></a>
+        <a class="node" href="#github"><b>GitHub</b><small>Versioning</small></a>
+        <a class="node" href="#vercel"><b>Vercel</b><small>Deployment</small></a>
+        <a class="node" href="#supabase"><b>Supabase</b><small>Data</small></a>
+        <a class="node" href="#railway"><b>Railway</b><small>Scheduled tasks</small></a>
+      </div>
+      <p class="hub__note">Added when a prototype needs real data or scheduled work.</p>
+      <div class="also">
+        <p class="also__label">Other Connectors</p>
+        <ul class="also__row">
+          <li><b>Cloudflare</b><span>Hosting and storage</span></li>
+          <li><b>Notion</b><span>Docs and specs</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Claude Code sits in the middle. Connectors reach each service and each has one job: Figma for design, GitHub for versions, Vercel for deploys, Supabase for data and auth, Railway for scheduled tasks. It’s not a straight line, so expect to move between them.</p><p>Also connected, not covered in detail: Cloudflare for hosting, edge functions and storage; Notion for docs and specs.</p></aside>
+</section>
+<section class="slide" id="figma" data-n="09" data-title="Figma" data-chapter="Figma" data-time="2:00">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Figma</h2>
+        <p class="slide__sub">Design</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Figma</span><span><b>09</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="stack">
+        <ul class="points"><li>The source of truth for styles, variables, grids and components.</li><li>Manual control where precision matters. The agent takes repetitive canvas work.</li><li>Claude reads your frames and variable bindings, so builds inherit your tokens.</li></ul>
+        <div class="prompt">
+          <p class="prompt__label">Example prompt</p>
+          <p class="prompt__text">build this frame as a working page using my variables, text styles and components</p>
+          <button class="copy" type="button" data-copy="build this frame as a working page using my variables, text styles and components">Copy prompt</button>
+        </div>
+      </div>
+      <figure class="shot">
+        <div class="shot__img"><img src="assets/img/figma-editor.webp" alt="The Figma editor with a frame selected and its Fill bound to a variable in the right-hand panel." width="1500" height="801" loading="lazy" decoding="async"></div>
+        <figcaption>That fill is bound to a variable (bg/charcoal). Claude reads bindings like that when it builds from your file.</figcaption>
+        <a class="shot__link" href="https://www.figma.com" target="_blank" rel="noopener">figma.com</a>
+      </figure>
+    </div>
+    <div class="caps">
+      <p class="caps__label">What it can do</p>
+      <ul class="pills "><li>Design</li><li>Components</li><li>Variables and styles</li><li>Prototyping</li><li>Collaboration</li><li>AI agent</li></ul>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Still the source of truth for styles, variables, grids and components, and Claude reads them. Point at the Fill row in the screenshot: that’s a variable binding. The Figma agent left beta on Oct 6 and handles repetitive canvas work. It uses AI credits, so check your plan first.</p><p>Link: figma.com</p></aside>
+</section>
+<section class="slide" id="figma-setup" data-n="10" data-title="Figma: setup and use." data-chapter="Figma" data-time="1:30">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Figma: setup and use.</h2>
+        <p class="slide__sub">Connect once. Work from links.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Figma</span><span><b>10</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="sections">
+        <div class="info"><p class="info__label">Use it when</p><p>You have a frame or design system to build from.</p></div>
+        <div class="info"><p class="info__label">Day to day</p><p>Paste a frame link, ask for the build, compare it with the design, and go again in small steps. Claude reads your styles and variables too.</p></div>
+        <div class="info"><p class="info__label">Access it uses</p><p>Your Figma access: reads frames, styles and variables, and can edit files you can edit.</p></div>
+      </div>
+      <div class="steps" data-steps>
+        <p class="steps__label">How to set it up</p>
+        <ol>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">1</span><span class="step__text">In a session, click + → Connectors.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">2</span><span class="step__text">Add Figma and sign in with your Figma account.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">3</span><span class="step__text">Prep the file: components, auto layout, named layers, variables.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">4</span><span class="step__text">Copy the link to the frame you want built.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">5</span><span class="step__text">Paste it into the session and say what to build. Claude does the rest.</span></span></label></li>
+          <li><label class="step step--loop"><input type="checkbox"><span class="step__row"><span class="step__num"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.9-4.15"/><path d="M13.6 2.2v3h-3"/></svg></span><span class="step__text">Rinse and repeat: tweak the design, copy the new frame link, rebuild, compare.</span></span></label></li>
+        </ol>
+        <p class="steps__tally" aria-live="polite" data-tally></p>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Connect once from + → Connectors, then work from frame links instead of exports. Prep the file first: components, auto layout, named layers and variables, because Claude reads that structure. It acts as you, so it can read what you can open and edit what you can edit.</p></aside>
+</section>
+<section class="slide" id="github" data-n="11" data-title="GitHub" data-chapter="GitHub" data-time="1:30">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">GitHub</h2>
+        <p class="slide__sub">Version control</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">GitHub</span><span><b>11</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="stack">
+        <ul class="points"><li>Every change is versioned, so any earlier state is recoverable. Claude makes the commits.</li><li>Branches isolate experiments. Claude creates them and merges the keepers.</li><li>Pull requests make a change reviewable. Claude opens them and watches the checks.</li></ul>
+        <div class="prompt">
+          <p class="prompt__label">Example prompt</p>
+          <p class="prompt__text">take care of GitHub for me, and try a bolder layout so I can compare the two</p>
+          <button class="copy" type="button" data-copy="take care of GitHub for me, and try a bolder layout so I can compare the two">Copy prompt</button>
+        </div>
+      </div>
+      <figure class="shot">
+        <div class="shot__img"><img src="assets/img/github-pr-comment.webp" alt="A GitHub pull request with a comment pinned to a point on an image." width="1500" height="678" loading="lazy" decoding="async"></div>
+        <figcaption>Pull requests support comments on images, so visual changes get reviewed in place.</figcaption>
+        <a class="shot__link" href="https://github.com" target="_blank" rel="noopener">github.com</a>
+      </figure>
+    </div>
+    <div class="caps">
+      <p class="caps__label">What it can do</p>
+      <ul class="pills "><li>Version history</li><li>Branches</li><li>Pull requests</li><li>Collaboration</li><li>Hosting (Pages)</li><li>Automation (Actions)</li><li>Issues</li></ul>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Version history for the whole project, and I never operate it. Claude makes the commits, creates the branches and opens the pull requests. The next slide shows how I ask and what Claude does; the one after defines the terms so you recognize them.</p><p>Link: github.com</p></aside>
+</section>
+<section class="slide" id="github-ask" data-n="12" data-title="GitHub: I ask. Claude does." data-chapter="GitHub" data-time="1:00">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">GitHub: I ask. Claude does.</h2>
+        <p class="slide__sub">I’m a designer, not a developer.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">GitHub</span><span><b>12</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <table class="grid grid--ask">
+      <thead><tr><th scope="col">I ask</th><th scope="col">Claude does</th></tr></thead>
+      <tbody>
+        <tr><td data-label="I ask">&ldquo;take care of GitHub for me&rdquo;</td><td class="muted" data-label="Claude does">Creates the repo and keeps every change saved.</td></tr>
+        <tr><td data-label="I ask">&ldquo;make the hover effect less intense&rdquo;</td><td class="muted" data-label="Claude does">Edits the code and saves it as a new version.</td></tr>
+        <tr><td data-label="I ask">&ldquo;try a bolder version so I can compare&rdquo;</td><td class="muted" data-label="Claude does">Makes a branch and builds it. The original stays untouched.</td></tr>
+        <tr><td data-label="I ask">&ldquo;I like that one&rdquo;</td><td class="muted" data-label="Claude does">Merges that branch into the main version.</td></tr>
+        <tr><td data-label="I ask">&ldquo;go back to how it was&rdquo;</td><td class="muted" data-label="Claude does">Reverts to the earlier version.</td></tr>
+        <tr><td data-label="I ask">&ldquo;do whatever works&rdquo;</td><td class="muted" data-label="Claude does">Picks the approach, does it, and tells you what it did.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout--wide"><p class="callout__text">Git, GitHub, PRs and merges are Claude&rsquo;s job. Mine is the design call.</p></div>
+  </div>
+  <aside class="slide__notes" hidden><p>The premise, in the GitHub context: I’m a designer, not a developer. I say what I want in plain words, the way I’d say it to a teammate, and Claude does the git and GitHub work. Left column is how I actually ask; right column is what Claude does. Do whatever works means it picks the approach and tells me what it did. I still review the preview and the diff, because that part is design judgment.</p></aside>
+</section>
+<section class="slide" id="github-terms" data-n="13" data-title="How GitHub works." data-chapter="GitHub" data-time="2:00">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">How GitHub works.</h2>
+        <p class="slide__sub">Four terms. Claude handles all of them.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">GitHub</span><span><b>13</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="diagram" data-diagram>
+      <svg viewBox="0 0 1200 270" role="img" aria-label="Diagram: a branch leaves main, lives in its own worktree folder, goes through a pull request, and is merged back into main.">
+        <path class="d-line draw" style="--len:1120" d="M40 70 H1160"/>
+        <circle class="d-dot pop" style="--d:.3s" cx="40" cy="70" r="7"/>
+        <circle class="d-dot pop" style="--d:.5s" cx="300" cy="70" r="7"/>
+        <circle class="d-dot pop" style="--d:1.9s" cx="1160" cy="70" r="7"/>
+        <text class="d-text" x="40" y="42">main</text>
+        <g data-term="branch">
+          <path class="d-line draw" style="--len:620" d="M300 70 C345 70 340 170 395 170 H645 C705 170 710 70 760 70"/>
+          <circle class="d-dot pop" style="--d:.8s" cx="450" cy="170" r="7"/>
+          <circle class="d-dot pop" style="--d:1s" cx="570" cy="170" r="7"/>
+          <text class="d-text" x="400" y="150">branch</text>
+        </g>
+        <g data-term="worktree">
+          <rect class="d-bracket" x="380" y="118" width="290" height="104" rx="18"/>
+          <text class="d-text" x="380" y="248">worktree: this branch in its own folder</text>
+        </g>
+        <g data-term="pr">
+          <path class="d-bracket" d="M668 160 C705 150 735 128 790 120"/>
+          <text class="d-text" x="798" y="125">pull request</text>
+        </g>
+        <g data-term="merge">
+          <circle class="d-dot pop" style="--d:1.5s" cx="760" cy="70" r="11"/>
+          <text class="d-text" x="760" y="42" text-anchor="middle">merge</text>
+        </g>
+      </svg>
+    </div>
+    <div class="terms">
+      <div class="term" data-for="branch" tabindex="0">
+        <h3>Branch</h3>
+        <p>A parallel line of work in the same repository.</p>
+        <p>Enables: trying a layout variant without touching the version that is live.</p>
+      </div>
+      <div class="term" data-for="worktree" tabindex="0">
+        <h3>Worktree</h3>
+        <p>A separate checkout of the repo, on its own branch, in its own folder.</p>
+        <p>Enables: parallel Claude sessions that can’t overwrite each other’s files.</p>
+      </div>
+      <div class="term" data-for="pr" tabindex="0">
+        <h3>Pull request</h3>
+        <p>A proposal to merge one branch into another, shown as a diff.</p>
+        <p>Enables: review, comments and automated checks before anything lands.</p>
+      </div>
+      <div class="term" data-for="merge" tabindex="0">
+        <h3>Merge</h3>
+        <p>Folding one branch’s changes back into another, usually main.</p>
+        <p>Enables: approved work becoming the shared version, ready for Vercel to deploy.</p>
+      </div>
+    </div>
+    <p class="reassure">Claude runs all of this. You just describe the change.</p>
+  </div>
+  <aside class="slide__notes" hidden><p>The terms, for recognition only. Claude does all of it. Branch: a parallel line of work. Worktree: that branch checked out in its own folder, which is how Claude Code runs several sessions without collisions. Pull request: a proposal to merge a branch, shown as a diff with comments and checks. Merge: folding the branch back into main. With auto-merge on in the repo, Claude can merge once checks pass.</p></aside>
+</section>
+<section class="slide" id="github-setup" data-n="14" data-title="GitHub: setup and use." data-chapter="GitHub" data-time="1:30">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">GitHub: setup and use.</h2>
+        <p class="slide__sub">Connect once. No manual syncing.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">GitHub</span><span><b>14</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="sections">
+        <div class="info"><p class="info__label">Use it when</p><p>Any project you want versioned, shared or reviewed. Start from the first session.</p></div>
+        <div class="info"><p class="info__label">Day to day</p><p>Claude makes the commits, branches and PRs, watches the checks, and can merge when they pass if the repo allows it. You review the preview and say what to change.</p></div>
+        <div class="info"><p class="info__label">Access it uses</p><p>Your repo access via the connector and gh: reads and writes code, branches and PRs.</p></div>
+      </div>
+      <div class="steps" data-steps>
+        <p class="steps__label">How to set it up</p>
+        <ol>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">1</span><span class="step__text">Start the project in Claude Code, in a local folder.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">2</span><span class="step__text">Connect GitHub once: + → Connectors → GitHub. Sign in to gh if it asks.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">3</span><span class="step__text">Say: take care of GitHub for me. Claude creates the repo and the first commit.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">4</span><span class="step__text">From then on, just describe the change. Claude handles branches, PRs and merges.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">5</span><span class="step__text">Claude makes the commits, opens the PRs and merges them. You review the preview.</span></span></label></li>
+          <li><label class="step step--loop"><input type="checkbox"><span class="step__row"><span class="step__num"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.9-4.15"/><path d="M13.6 2.2v3h-3"/></svg></span><span class="step__text">Rinse and repeat: ask for the next change.</span></span></label></li>
+        </ol>
+        <p class="steps__tally" aria-live="polite" data-tally></p>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Connect GitHub once from + → Connectors, then say take care of GitHub for me. Claude creates the repo, makes the first commit and handles branches, PRs and merges from then on. No manual syncing: nothing to copy, upload or push by hand. PR creation and CI watching also need the GitHub CLI (gh) signed in; Desktop prompts you the first time.</p></aside>
+</section>
+<section class="slide" id="vercel" data-n="15" data-title="Vercel" data-chapter="Vercel" data-time="1:15">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Vercel</h2>
+        <p class="slide__sub">Deploy</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Vercel</span><span><b>15</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="stack">
+        <ul class="points"><li>Builds and hosts every branch at its own URL.</li><li>Reviewers test the real build on real devices, with no setup.</li><li>Claude deploys it and sends you the link.</li></ul>
+        <div class="prompt">
+          <p class="prompt__label">Example prompt</p>
+          <p class="prompt__text">deploy this branch to vercel and give me the preview url</p>
+          <button class="copy" type="button" data-copy="deploy this branch to vercel and give me the preview url">Copy prompt</button>
+        </div>
+      </div>
+      <figure class="shot">
+        <div class="shot__img"><img src="assets/img/vercel-deployments.webp" alt="Vercel&#x27;s Deployments page listing preview builds for branches and production builds from main." width="1272" height="705" loading="lazy" decoding="async"></div>
+        <figcaption>Each row is a deployment. Preview rows are branch builds, and Production rows come from main.</figcaption>
+        <a class="shot__link" href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a>
+      </figure>
+    </div>
+    <div class="caps">
+      <p class="caps__label">What it can do</p>
+      <ul class="pills "><li>Deploy</li><li>Preview URLs</li><li>Hosting</li><li>Domains</li><li>Environment variables</li><li>Rollbacks</li></ul>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Every branch builds at its own URL, so reviewers test the real thing on real devices. Merging to main promotes the build to production.</p><p>Link: vercel.com</p></aside>
+</section>
+<section class="slide" id="vercel-setup" data-n="16" data-title="Vercel: setup and use." data-chapter="Vercel" data-time="1:15">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Vercel: setup and use.</h2>
+        <p class="slide__sub">Import the repo. Get previews.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Vercel</span><span><b>16</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="sections">
+        <div class="info"><p class="info__label">Use it when</p><p>You want a shareable URL for review, or a host for the front end.</p></div>
+        <div class="info"><p class="info__label">Day to day</p><p>Open the preview URL on a phone, send it for comments, and Claude ships it when it looks right. If a deploy fails, ask Claude to check the build output.</p></div>
+        <div class="info"><p class="info__label">Access it uses</p><p>Your Vercel team access: deploys, and edits project settings and variables.</p></div>
+      </div>
+      <div class="steps" data-steps>
+        <p class="steps__label">How to set it up</p>
+        <ol>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">1</span><span class="step__text">Ask: put this on Vercel and send me a preview link.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">2</span><span class="step__text">Sign in to Vercel if it asks. Claude picks the route: the CLI, or importing the GitHub repo.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">3</span><span class="step__text">Claude adds the environment variables and fixes build errors.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">4</span><span class="step__text">After that, each branch gets its own preview URL.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">5</span><span class="step__text">Open the link on your phone and say what to change.</span></span></label></li>
+          <li><label class="step step--loop"><input type="checkbox"><span class="step__row"><span class="step__num"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.9-4.15"/><path d="M13.6 2.2v3h-3"/></svg></span><span class="step__text">Rinse and repeat: change, preview, ship.</span></span></label></li>
+        </ol>
+        <p class="steps__tally" aria-live="polite" data-tally></p>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Ask Claude to put it on Vercel and send a preview link. It picks the route, either the CLI or importing the GitHub repo, adds environment variables and fixes build errors. Keep keys in environment variables, never in code, prompts or screenshots.</p></aside>
+</section>
+<section class="slide" id="supabase" data-n="17" data-title="Supabase" data-chapter="Supabase" data-time="1:15">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Supabase</h2>
+        <p class="slide__sub">Data and auth</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Supabase</span><span><b>17</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="stack">
+        <ul class="points"><li>A hosted Postgres database, browsable and editable as a table.</li><li>Sign-in and user management that Claude sets up for you.</li><li>Real data to design against, including empty, loading and error states.</li></ul>
+        <div class="prompt">
+          <p class="prompt__label">Example prompt</p>
+          <p class="prompt__text">add sign-in and a favorites table to this prototype using supabase</p>
+          <button class="copy" type="button" data-copy="add sign-in and a favorites table to this prototype using supabase">Copy prompt</button>
+        </div>
+      </div>
+      <figure class="shot">
+        <div class="shot__img"><img src="assets/img/supabase-table-editor.webp" alt="The Supabase table editor showing a table with rows of data." width="1500" height="721" loading="lazy" decoding="async"></div>
+        <figcaption>The table editor shows live rows and lets you edit cells directly.</figcaption>
+        <a class="shot__link" href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>
+      </figure>
+    </div>
+    <div class="caps">
+      <p class="caps__label">What it can do</p>
+      <ul class="pills "><li>Database</li><li>Sign-in</li><li>File storage</li><li>Auto-generated APIs</li><li>Realtime</li><li>Edge functions</li></ul>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Hosted Postgres with a table editor, plus sign-in and user management. Real rows to design against, including empty, loading and error states.</p><p>Link: supabase.com</p></aside>
+</section>
+<section class="slide" id="supabase-setup" data-n="18" data-title="Supabase: setup and use." data-chapter="Supabase" data-time="1:15">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Supabase: setup and use.</h2>
+        <p class="slide__sub">Connect it. Keep keys in .env.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Supabase</span><span><b>18</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="sections">
+        <div class="info"><p class="info__label">Use it when</p><p>The prototype needs real data, sign-in or file storage.</p></div>
+        <div class="info"><p class="info__label">Day to day</p><p>Describe the data, let Claude write the migration, then open the table editor to see the rows. Use real data to design empty, loading and error states.</p></div>
+        <div class="info"><p class="info__label">Access it uses</p><p>Your project access: schema, data, SQL and migrations. Can be limited to one project or read-only.</p></div>
+      </div>
+      <div class="steps" data-steps>
+        <p class="steps__label">How to set it up</p>
+        <ol>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">1</span><span class="step__text">Create a project at supabase.com.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">2</span><span class="step__text">Add the Supabase connector: + → Connectors.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">3</span><span class="step__text">Say: set up sign-in and a favorites table. Claude designs the tables and runs the migrations.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">4</span><span class="step__text">Claude puts the URL and publishable key in .env. The secret key never goes in the app.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">5</span><span class="step__text">Open the table editor to see the rows.</span></span></label></li>
+          <li><label class="step step--loop"><input type="checkbox"><span class="step__row"><span class="step__num"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.9-4.15"/><path d="M13.6 2.2v3h-3"/></svg></span><span class="step__text">Rinse and repeat: describe the next change to the data.</span></span></label></li>
+        </ol>
+        <p class="steps__tally" aria-live="polite" data-tally></p>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Create the project, add the connector, then describe the data and sign-in you want. Claude designs the tables, runs the migrations and puts the URL and publishable key in .env. The publishable key is safe in the app because row-level security limits it; the secret key bypasses that and stays on the server. An API is how one program asks another for data or an action, and a key identifies the caller and sets what it may do.</p></aside>
+</section>
+<section class="slide" id="railway" data-n="19" data-title="Railway" data-chapter="Railway" data-time="1:15">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Railway</h2>
+        <p class="slide__sub">Hosting and scheduled tasks</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Railway</span><span><b>19</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="stack">
+        <ul class="points"><li>Runs services that have to stay up: APIs, workers, databases.</li><li>Scheduled tasks, like a nightly data refresh, that Claude sets up and deploys.</li><li>Logs and metrics show what happened when a run fails.</li></ul>
+        <div class="prompt">
+          <p class="prompt__label">Example prompt</p>
+          <p class="prompt__text">set this up as a scheduled task that runs every morning and deploy it to railway</p>
+          <button class="copy" type="button" data-copy="set this up as a scheduled task that runs every morning and deploy it to railway">Copy prompt</button>
+        </div>
+      </div>
+      <figure class="shot">
+        <div class="shot__img"><img src="assets/img/railway-canvas.webp" alt="A Railway project canvas with a card for each service and an activity feed of deploys." width="1295" height="695" loading="lazy" decoding="async"></div>
+        <figcaption>Each card is a service in the project. The activity feed lists deploys and restarts.</figcaption>
+        <a class="shot__link" href="https://railway.com" target="_blank" rel="noopener">railway.com</a>
+      </figure>
+    </div>
+    <div class="caps">
+      <p class="caps__label">What it can do</p>
+      <ul class="pills "><li>Run services</li><li>Scheduled tasks</li><li>Databases</li><li>Variables</li><li>Logs and metrics</li><li>Deploy from GitHub</li></ul>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>For things that have to keep running: services, workers and scheduled tasks, meaning work that runs on its own at set times, like a morning data refresh. Logs and metrics show what happened when a run fails.</p><p>Link: railway.com</p></aside>
+</section>
+<section class="slide" id="railway-setup" data-n="20" data-title="Railway: setup and use." data-chapter="Railway" data-time="1:15">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Railway: setup and use.</h2>
+        <p class="slide__sub">Deploy from the repo. Schedule it.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Railway</span><span><b>20</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <div class="cols">
+      <div class="sections">
+        <div class="info"><p class="info__label">Use it when</p><p>Something has to stay running or run on a schedule: an API, a worker, a nightly refresh.</p></div>
+        <div class="info"><p class="info__label">Day to day</p><p>Ask Claude to write the task, set the schedule and read the logs when a run fails. Claude handles the config.</p></div>
+        <div class="info"><p class="info__label">Access it uses</p><p>Your project access: deploys, variables and logs.</p></div>
+      </div>
+      <div class="steps" data-steps>
+        <p class="steps__label">How to set it up</p>
+        <ol>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">1</span><span class="step__text">Ask: run this every morning and host it on Railway.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">2</span><span class="step__text">Sign in to Railway if it asks. Claude creates the project from the repo.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">3</span><span class="step__text">Claude adds the variables and sets the start command or cron schedule.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">4</span><span class="step__text">Later pushes redeploy automatically.</span></span></label></li>
+          <li><label class="step"><input type="checkbox"><span class="step__row"><span class="step__num">5</span><span class="step__text">Ask Claude to check the logs after the first run.</span></span></label></li>
+          <li><label class="step step--loop"><input type="checkbox"><span class="step__row"><span class="step__num"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.9-4.15"/><path d="M13.6 2.2v3h-3"/></svg></span><span class="step__text">Rinse and repeat: ask for the next change.</span></span></label></li>
+        </ol>
+        <p class="steps__tally" aria-live="polite" data-tally></p>
+      </div>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Ask Claude to run it on a schedule and host it on Railway. It creates the project from the repo, adds variables and sets the start command or cron schedule. A scheduled task is work that runs on its own at set times, like a morning data refresh. Check the logs after the first run.</p></aside>
+</section>
+<section class="slide" id="feature" data-n="21" data-title="One feature, start to finish." data-chapter="Start to finish" data-time="2:00">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">One feature, start to finish.</h2>
+        <p class="slide__sub">Then rinse and repeat.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Start to finish</span><span><b>21</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <ol class="feature" data-feature>
+      <li><b>1</b><h3>Prep the design, wireframe etc</h3><p>Components, auto layout, named layers, variables, claude will read it all</p><ul class="pills pills--sm"><li>Figma</li></ul></li>
+      <li><b>2</b><h3>Start a session</h3><p>Paste the frame link and say what you want. Connectors on.</p><ul class="pills pills--sm"><li>Claude Code</li></ul></li>
+      <li><b>3</b><h3>Plan, then build</h3><p>Approve the plan, then watch the live preview as it builds.</p><ul class="pills pills--sm"><li>Claude Code</li></ul></li>
+      <li><b>4</b><h3>Check against the design</h3><p>Ask for every difference from the frame. Fix in small steps.</p><ul class="pills pills--sm"><li>Claude Code</li><li>Figma</li></ul></li>
+      <li><b>5</b><h3>Claude opens the PR</h3><p>It pushes the branch, opens the PR and watches the checks.</p><ul class="pills pills--sm"><li>GitHub</li><li>Vercel</li></ul></li>
+      <li><b>6</b><h3>Claude merges it</h3><p>Once checks pass, it merges and Vercel ships it. Then the next feature.</p><ul class="pills pills--sm"><li>GitHub</li><li>Vercel</li></ul></li>
+    </ol>
+    <div class="loopbar">
+      <button class="btn btn--solid" type="button" data-loop aria-pressed="false">Play the loop</button>
+      <p class="note">Add Supabase for real data, Railway for scheduled tasks.</p>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>The whole loop on a single feature. My parts are the design judgment: prep the design, say what I want, review the plan and the preview, say what to change. Claude does the git: it opens the PR, watches the checks and merges, and Vercel builds the preview and ships. Add Supabase for real data and Railway for scheduled tasks.</p></aside>
+</section>
+<section class="slide" id="links" data-n="22" data-title="Links and docs." data-chapter="Start to finish" data-time="1:00">
+  <div class="slide__head">
+    <div class="slide__headin">
+      <h2 class="slide__title">Links and docs.</h2>
+        <p class="slide__sub">Where to read more.</p>
+    </div>
+    <p class="slide__count" aria-hidden="true"><span class="slide__chapter">Start to finish</span><span><b>22</b> / 22</span></p>
+  </div>
+  <div class="slide__body">
+    <table class="grid grid--links">
+      <thead><tr><th scope="col">Tool</th><th scope="col">Docs</th><th scope="col">What&rsquo;s there</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Tool">Claude Code</td><td data-label="Docs"><a href="https://code.claude.com/docs/en/desktop" target="_blank" rel="noopener">code.claude.com/docs</a></td><td class="muted" data-label="What’s there">Desktop app, worktrees, permission modes</td></tr>
+        <tr><td data-label="Tool">Figma</td><td data-label="Docs"><a href="https://developers.figma.com/docs/figma-mcp-server/" target="_blank" rel="noopener">developers.figma.com/docs/figma-mcp-server</a></td><td class="muted" data-label="What’s there">The MCP server behind the Figma connector</td></tr>
+        <tr><td data-label="Tool">GitHub</td><td data-label="Docs"><a href="https://docs.github.com/en/pull-requests" target="_blank" rel="noopener">docs.github.com</a></td><td class="muted" data-label="What’s there">Pull requests, Pages, Actions</td></tr>
+        <tr><td data-label="Tool">Vercel</td><td data-label="Docs"><a href="https://vercel.com/docs" target="_blank" rel="noopener">vercel.com/docs</a></td><td class="muted" data-label="What’s there">Deployments, previews, environment variables</td></tr>
+        <tr><td data-label="Tool">Supabase</td><td data-label="Docs"><a href="https://supabase.com/docs" target="_blank" rel="noopener">supabase.com/docs</a></td><td class="muted" data-label="What’s there">Database, auth, storage</td></tr>
+        <tr><td data-label="Tool">Railway</td><td data-label="Docs"><a href="https://docs.railway.com" target="_blank" rel="noopener">docs.railway.com</a></td><td class="muted" data-label="What’s there">Services, variables, cron schedules</td></tr>
+      </tbody>
+    </table>
+    <div class="credits">
+      <p><b>Screens.</b> The Figma editor and Vercel deployments are my own windows. The GitHub, Supabase and Railway images come from each company&rsquo;s public docs and site. The Claude Code video is Anthropic&rsquo;s, on YouTube.</p>
+      <p><b>Not affiliated.</b> This page isn&rsquo;t affiliated with or endorsed by Anthropic, Figma, GitHub, Vercel, Supabase, Railway or Wiley. &ldquo;For Dummies&rdquo; is a trademark of John Wiley &amp; Sons, and the cover is shown as a joke about the title.</p>
+      <p>Slides were made in Figma. This page was built with Claude Code, by someone who didn&rsquo;t write the code.</p>
+    </div>
+  </div>
+  <aside class="slide__notes" hidden><p>Leave this up for questions. Runs about 30 minutes. Each link goes to that service’s docs; the sites themselves are on the intro slides.</p></aside>
+</section>
+</main>
+
+<div class="hud" role="group" aria-label="Presenter controls">
+  <span><b data-hud-n>01</b> / 22</span>
+  <span>Slide <b data-hud-slide>0:00</b> of <span data-hud-budget>0:30</span></span>
+  <span>Total <b data-hud-total>0:00</b> of 30:00</span>
+  <button class="btn" type="button" data-timer>Pause</button>
+  <button class="btn" type="button" data-reset-clock>Reset</button>
+  <button class="btn" type="button" data-notes-toggle>Notes <kbd>N</kbd></button>
+  <button class="btn" type="button" data-fs>Fullscreen <kbd>F</kbd></button>
+  <button class="btn btn--solid" type="button" data-present>Exit <kbd>Esc</kbd></button>
+</div>
+
+<aside class="notes" aria-label="Speaker notes" data-notes>
+  <div class="notes__in">
+    <p class="notes__meta"><span data-notes-title></span><span data-notes-time></span></p>
+    <div data-notes-body></div>
+    <p class="notes__next" data-notes-next></p>
+  </div>
+</aside>
+
+<div class="keys" data-keys-modal role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+  <div class="keys__box">
+    <h2>Presenting</h2>
+    <dl>
+      <dt><kbd>P</kbd></dt><dd>Start or stop presenting</dd>
+      <dt><kbd>&rarr;</kbd> <kbd>Space</kbd> <kbd>J</kbd></dt><dd>Next slide</dd>
+      <dt><kbd>&larr;</kbd> <kbd>K</kbd></dt><dd>Previous slide</dd>
+      <dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>First or last slide</dd>
+      <dt><kbd>N</kbd></dt><dd>Speaker notes</dd>
+      <dt><kbd>F</kbd></dt><dd>Fullscreen</dd>
+      <dt><kbd>?</kbd></dt><dd>This list</dd>
+      <dt><kbd>Esc</kbd></dt><dd>Close this, or stop presenting</dd>
+    </dl>
+    <p class="note" style="margin-top:16px">Outside presenting, <kbd>J</kbd> and <kbd>K</kbd> still jump slide to slide.</p>
+  </div>
+</div>
+
+<script src="assets/app.js" defer></script>
+</body>
+</html>
