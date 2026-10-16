@@ -1,0 +1,134 @@
+[
+ {
+  "n": "01",
+  "title": "COVER",
+  "t": "0:30",
+  "text": "The framing for the whole talk: the most powerful dev tools, used by a dummy, for dummies. I’m a designer, not a developer. These tools are built for engineers, and the trick is that I don’t operate them: I tell Claude Code what I want and it does the work. This talk covers which tools, how they connect, and how I ask."
+ },
+ {
+  "n": "02",
+  "title": "CLAUDE CODE",
+  "t": "2:00",
+  "text": "The desktop app, not the chat site. Walk the window: sessions on the left, the conversation, the live preview. Connectors are how it reaches Figma and the other services. Each session runs in its own git worktree. ⏎ Link: code.claude.com/docs"
+ },
+ {
+  "n": "03",
+  "title": "CLAUDE CODE IS ITS OWN THING",
+  "t": "1:30",
+  "text": "The desktop app has three tabs: Chat for everyday conversations, Cowork for Dispatch and longer agentic work, and Code for building software. They keep separate conversations. A Code session knows its own history, its project folder, CLAUDE.md and auto memory, and nothing I told Chat or Cowork. The one bridge is Dispatch, which can start a Code session with a task. Connectors and skills live under Customize and are shared across the tabs."
+ },
+ {
+  "n": "04",
+  "title": "FOLDERS AND SAVED CONTEXT",
+  "t": "1:30",
+  "text": "Every Code session is tied to a project folder or repo on my computer. Claude reads, edits and runs commands there, and the built-in terminal opens in the same place. For Git projects each session can work in its own worktree under .claude/worktrees so parallel tasks don’t collide. Memory: each session has its own history saved locally and a new one starts fresh. What carries over is CLAUDE.md, instructions I write, and auto memory, notes Claude writes itself from my corrections. Settings, skills and rules live in the project’s .claude folder, with global ones in ~/.claude."
+ },
+ {
+  "n": "05",
+  "title": "CLAUDE CODE SETUP",
+  "t": "1:30",
+  "text": "Install the desktop app, open the Code tab, choose the folder. For Git projects pick the worktree option so each task is isolated; Claude manages the branch. Pick a permission mode, then describe what you want and review the preview and the diff. No terminal needed. Claude Code needs a paid plan. ⏎ A new worktree is a fresh checkout, so gitignored files like .env don’t come along. Ask Claude to list them in .worktreeinclude (worktrees docs)."
+ },
+ {
+  "n": "06",
+  "title": "POINT AT IT, SAY WHAT TO CHANGE",
+  "t": "1:30",
+  "text": "Selections turn into edit requests, so I can point instead of describing. In the live preview, Cmd+Shift+S selects an element, and the markup toolbar lets me draw arrows, boxes, circles and text, then Add to chat sends it with my request. In the diff, clicking any line opens a comment box and I can submit all comments at once. I can also attach a screenshot or mockup and say what to match. Then I say what to change: make this bigger, tighten the spacing here, match the frame."
+ },
+ {
+  "n": "07",
+  "title": "PERMISSIONS",
+  "t": "1:30",
+  "text": "Two layers. Connectors act with your account’s access, so scope them: Supabase can be limited to one project or read-only, and Tool access in the Connectors menu controls which tools Claude can use. Then the permission mode. Manual asks before each action. Accept edits auto-approves file edits and common file commands but still asks before other terminal commands. Plan blocks edits until you approve a plan. Auto runs everything with background safety checks. Bypass permissions runs without prompts, and the docs recommend it for isolated environments; safety checks still prompt on external sites. ⏎ How I run it: Accept edits or Bypass permissions on stable projects. Commits and worktrees make edits easy to revert."
+ },
+ {
+  "n": "08",
+  "title": "HOW IT CONNECTS",
+  "t": "1:15",
+  "text": "Claude Code sits in the middle. Connectors reach each service and each has one job: Figma for design, GitHub for versions, Vercel for deploys, Supabase for data and auth, Railway for scheduled tasks. It’s not a straight line, so expect to move between them. ⏎ Also connected, not covered in detail: Cloudflare for hosting, edge functions and storage; Notion for docs and specs."
+ },
+ {
+  "n": "09",
+  "title": "FIGMA",
+  "t": "2:00",
+  "text": "Still the source of truth for styles, variables, grids and components, and Claude reads them. Point at the Fill row in the screenshot: that’s a variable binding. The Figma agent left beta on Oct 6 and handles repetitive canvas work. It uses AI credits, so check your plan first. ⏎ Link: figma.com"
+ },
+ {
+  "n": "10",
+  "title": "FIGMA SETUP",
+  "t": "1:30",
+  "text": "Connect once from + → Connectors, then work from frame links instead of exports. Prep the file first: components, auto layout, named layers and variables, because Claude reads that structure. It acts as you, so it can read what you can open and edit what you can edit."
+ },
+ {
+  "n": "11",
+  "title": "GITHUB",
+  "t": "1:30",
+  "text": "Version history for the whole project, and I never operate it. Claude makes the commits, creates the branches and opens the pull requests. The next slide shows how I ask and what Claude does; the one after defines the terms so you recognize them. ⏎ Link: github.com"
+ },
+ {
+  "n": "12",
+  "title": "GITHUB: I ASK, CLAUDE DOES",
+  "t": "1:00",
+  "text": "The premise, in the GitHub context: I’m a designer, not a developer. I say what I want in plain words, the way I’d say it to a teammate, and Claude does the git and GitHub work. Left column is how I actually ask; right column is what Claude does. Do whatever works means it picks the approach and tells me what it did. I still review the preview and the diff, because that part is design judgment."
+ },
+ {
+  "n": "13",
+  "title": "BRANCHES, PRS AND MERGES",
+  "t": "2:00",
+  "text": "The terms, for recognition only. Claude does all of it. Branch: a parallel line of work. Worktree: that branch checked out in its own folder, which is how Claude Code runs several sessions without collisions. Pull request: a proposal to merge a branch, shown as a diff with comments and checks. Merge: folding the branch back into main. With auto-merge on in the repo, Claude can merge once checks pass."
+ },
+ {
+  "n": "14",
+  "title": "GITHUB SETUP",
+  "t": "1:30",
+  "text": "Connect GitHub once from + → Connectors, then say take care of GitHub for me. Claude creates the repo, makes the first commit and handles branches, PRs and merges from then on. No manual syncing: nothing to copy, upload or push by hand. PR creation and CI watching also need the GitHub CLI (gh) signed in; Desktop prompts you the first time."
+ },
+ {
+  "n": "15",
+  "title": "VERCEL",
+  "t": "1:15",
+  "text": "Every branch builds at its own URL, so reviewers test the real thing on real devices. Merging to main promotes the build to production. ⏎ Link: vercel.com"
+ },
+ {
+  "n": "16",
+  "title": "VERCEL SETUP",
+  "t": "1:15",
+  "text": "Ask Claude to put it on Vercel and send a preview link. It picks the route, either the CLI or importing the GitHub repo, adds environment variables and fixes build errors. Keep keys in environment variables, never in code, prompts or screenshots."
+ },
+ {
+  "n": "17",
+  "title": "SUPABASE",
+  "t": "1:15",
+  "text": "Hosted Postgres with a table editor, plus sign-in and user management. Real rows to design against, including empty, loading and error states. ⏎ Link: supabase.com"
+ },
+ {
+  "n": "18",
+  "title": "SUPABASE SETUP",
+  "t": "1:15",
+  "text": "Create the project, add the connector, then describe the data and sign-in you want. Claude designs the tables, runs the migrations and puts the URL and publishable key in .env. The publishable key is safe in the app because row-level security limits it; the secret key bypasses that and stays on the server. An API is how one program asks another for data or an action, and a key identifies the caller and sets what it may do."
+ },
+ {
+  "n": "19",
+  "title": "RAILWAY",
+  "t": "1:15",
+  "text": "For things that have to keep running: services, workers and scheduled tasks, meaning work that runs on its own at set times, like a morning data refresh. Logs and metrics show what happened when a run fails. ⏎ Link: railway.com"
+ },
+ {
+  "n": "20",
+  "title": "RAILWAY SETUP",
+  "t": "1:15",
+  "text": "Ask Claude to run it on a schedule and host it on Railway. It creates the project from the repo, adds variables and sets the start command or cron schedule. A scheduled task is work that runs on its own at set times, like a morning data refresh. Check the logs after the first run."
+ },
+ {
+  "n": "21",
+  "title": "ONE FEATURE, START TO FINISH",
+  "t": "2:00",
+  "text": "The whole loop on a single feature. My parts are the design judgment: prep the design, say what I want, review the plan and the preview, say what to change. Claude does the git: it opens the PR, watches the checks and merges, and Vercel builds the preview and ships. Add Supabase for real data and Railway for scheduled tasks."
+ },
+ {
+  "n": "22",
+  "title": "LINKS AND DOCS",
+  "t": "1:00",
+  "text": "Leave this up for questions. Runs about 30 minutes. Each link goes to that service’s docs; the sites themselves are on the intro slides."
+ }
+]

@@ -34,9 +34,10 @@ index.html          all 22 slides and their speaker notes
 assets/style.css    the look: flat dark grey, Geist, outlined pills, one white callout per idea
 assets/app.js       nav, sticky heads, demos, presenter mode (no dependencies)
 assets/img/         screenshots, as WebP
+tools/              the script that first generated index.html, and the speaker notes it used
 ```
 
-No build step. Edit `index.html` and push. To change a slide, ask Claude Code: "change slide 12 so it says...".
+No build step. Edit `index.html` and push. `tools/gen.py` is only how the first version was made; running it again overwrites `index.html`, so leave it alone unless you want to start over. To change a slide, ask Claude Code: "change slide 12 so it says...".
 
 ## Hosting
 
